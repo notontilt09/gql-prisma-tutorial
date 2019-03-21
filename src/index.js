@@ -1,4 +1,19 @@
 const { GraphQLServer } = require('graphql-yoga')
+const { prisma } = require('./generated/prisma-client');
+
+async function main() {
+    // Create a new link
+    const newLink = await prisma.createLink({
+        url: 'www.prisma.io',
+        description: 'Primsa replaces traditional ORMs',
+    })
+    console.log(`Created new link: ${newLink.url} (ID: ${newLink.id})`);
+
+    const allLinks = await prisma.links()
+    console.log(allLinks)
+}
+
+main().catch(e => console.error(e))
 
 // 1
 
