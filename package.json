@@ -6,5 +6,11 @@
   "license": "MIT",
   "dependencies": {
     "graphql-yoga": "^1.17.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  },
+  "scripts": {
+    "server": "nodemon src/index.js"
   }
 }
