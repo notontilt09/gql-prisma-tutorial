@@ -26,6 +26,9 @@ const resolvers = {
         feed: (root, args, ctx, info) => {
             return ctx.prisma.links()
         },
+        link: (root, args, ctx, info) => {
+            return ctx.prisma.link({id: args.id})
+        }
     },
     Mutation: {
         // post: (parent, args) => {
@@ -52,7 +55,18 @@ const resolvers = {
             // return `you delete item ${args.id}`
 
             // return `Successfully deleted link ${args.id}`
+        },
+        updateLink: (root, args, ctx, info) => {
+            const newLink = ctx.prisma.updateLink({
+                where: {id: args.id},
+                data: {
+                    url: args.url,
+                    description: args.description
+                }
+            })
+            return newLink;
         }
+
 
         // deleteLink: (parent, args) => {
         //     links = links.filter(link => link.id !== `link-${args.id}`);
