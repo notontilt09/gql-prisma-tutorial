@@ -1,3 +1,9 @@
+module.exports = {
+    feed,
+    info,
+    link
+}
+
 function feed(root, args, ctx, info) {
     return ctx.prisma.links()
 }
@@ -8,10 +14,4 @@ function info() {
 
 function link(root, args, ctx, info) {
     return ctx.prisma.link({ id: args.id })
-}
-
-module.exports = {
-    feed,
-    info,
-    link
 }
